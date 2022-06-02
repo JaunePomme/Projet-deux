@@ -1,19 +1,22 @@
 extends layouts/frontend
 
 block content
-    .ui.middle.aligned.center.aligned.grid 
-        h1 Nom : #{furniture}
+    .ui.middle
+        h1 #{furniture}
             each val in material
-                li= val
-            h2 Matériau utilisé : #{category}
-            h2 Entreprise : #{company}
-        if (company == 'Bbois')
-            img(src='/images/bois.jpg')
-        if (company == 'Metalo')
-            img(src='/images/metal.jpg')
-        if (company == 'Pplastique')
-            img(src='/images/plastique.jpg')  
-        if (company =='Metalo,pPlastique')
-            img(src='/images/plastique.jpg')
-            img(src='/images/bois.jpg')
+                li= val    
+        div
+            h1 Matériau utilisé : #{category}
+        div
+            h1 Entreprise : #{company}
+        div
+            if (company == 'Bbois')
+                img(src='/images/bois.jpg' width='800' height='800')
+            if (company == 'Metalo')
+                img(src='/images/metal.jpg' width='800' height='800')
+            if (company == 'Pplastique')
+                img(src='/images/plastique.jpg' width='800' height='800')  
+            if (company =='Metalo,pPlastique')
+                img(src='/images/plastique.jpg' width='800' height='800')
+                img(src='/images/bois.jpg')
 
