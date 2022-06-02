@@ -1,0 +1,19 @@
+extends layouts/frontend
+
+block content
+    .ui.middle.aligned.center.aligned.grid 
+        h1 Nom : #{furniture}
+            each val in material
+                li= val
+            h2 Matériau utilisé : #{category}
+            h2 Entreprise : #{company}
+        if (company == 'Bbois')
+            img(src='/images/bois.jpg')
+        if (company == 'Metalo')
+            img(src='/images/metal.jpg')
+        if (company == 'Pplastique')
+            img(src='/images/plastique.jpg')  
+        if (company =='Metalo,pPlastique')
+            img(src='/images/plastique.jpg')
+            img(src='/images/bois.jpg')
+

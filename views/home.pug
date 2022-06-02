@@ -1,0 +1,28 @@
+extends layouts/frontend
+
+
+block content
+    .ui.middle.aligned.center.aligned.grid
+        .six.wide.column
+            if errorMessages.length>0 
+                p.ui.message.error=errorMessages.join('<br>')
+            form.ui.large.form(method="post", action="/login")
+                .ui.stacked.segment
+                    +field('text', 'firstName', 'First name')
+                    +field('text', 'lastName', 'Last name')
+                    +field('email', 'email', 'your.email@address.tld')
+                    //- +field('password', 'password', 'Password')
+                    //- +field('password', 'password_confirm', 'Confirm password')
+                    input(name="password" id="password" type="password" placeholder='password' onkeyup='check();')
+                    input(type="password" name="password_confirm" id="password_confirm"  onkeyup='check();')
+                    span(id='message')
+                    button(type="submit").ui.fluid.large.teal.submit.button Signup
+
+                .ui.error.message
+
+
+mixin field(type, name, placeholder)
+    .field
+        .ui.left.icon.input
+            i.icon(class=(type === 'password' ? 'lock' : 'user'))
+            input(type=type, name=name, placeholder=placeholder, required)

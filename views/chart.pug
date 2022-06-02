@@ -1,0 +1,72 @@
+extends layouts/frontend
+block content
+    .ui.middle.aligned.center.aligned.grid 
+        div
+            h1 Graphe des matériaux les plus utilisés
+            canvas#RatioMaterial(width='800' height='800')
+        div 
+            h1 Graphe des entreprises les plus utilisés
+            canvas#Companies(width='800' height='800')
+
+
+block scripts
+        script.
+            const labels = [
+            'Bois',
+            'Noyer',
+            'Acier',
+            'Frêne',
+            'Plastique',
+            'Inox',
+            'Aluminium'
+            ];
+            const data = {
+                labels: labels,
+                datasets: [{
+                label: 'Graphe des matériaux les plus utilisés',
+                backgroundColor: ["green", "grey", "blue","yellow","black","red","purple"], 
+                borderColor: 'rgb(255, 99, 132)',
+                data: !{JSON.stringify(countList)},
+                }]
+            }
+            const config = {
+                type: 'pie',
+                data: data,
+            }
+        script.
+            document.addEventListener('DOMContentLoaded',()=>{
+            const myChart = new Chart(
+            document.getElementById('RatioMaterial'),
+            config
+            );
+            })
+        script.
+            const labelsCompanies = [
+            'Bbois',
+            'Métalo',
+            'Pplastique',
+            ];
+            const dataCompanies = {
+                labels: labelsCompanies,
+                datasets: [{
+                label: 'Graphe des entreprises les plus utilisées',
+                backgroundColor: ["green", "grey", "blue"], 
+                borderColor: 'rgb(255, 99, 132)',
+                data: [5, 3, 1],
+                }]
+            }
+            const configCompanies = {
+                type: 'doughnut',
+                data: dataCompanies,
+            }
+        script.
+            document.addEventListener('DOMContentLoaded',()=>{
+            const mycompanies = new Chart(
+            document.getElementById('Companies'),
+            configCompanies
+            );
+            })
+
+            
+            
+        

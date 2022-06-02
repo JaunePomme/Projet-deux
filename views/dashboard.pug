@@ -1,0 +1,19 @@
+extends layouts/frontend
+
+block content
+    .ui.middle.aligned.center.aligned.grid
+        div 
+            h1 MATERIAUX
+            each val in materials
+                li
+                    h1= val
+        div 
+            h1 CATEGORIES
+            each val in categories
+                li
+                    h1= val
+        div 
+            h1 ENTREPRISES
+            each val in companies
+                li
+                    h1= val

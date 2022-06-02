@@ -1,0 +1,51 @@
+extends layouts/frontend
+
+block content
+    .ui.middle.aligned.center.aligned.grid
+                    form.ui.large.form(method="post", action='/product')
+                        .ui.stacked.segment
+                            button(name='furniture',type="submit", value='Etagère carré').ui.fluid.large.teal.submit.button Etagère carrée
+                            button(name='furniture',type="submit", value='Etagère solide').ui.fluid.large.teal.submit.button Etagère solide
+                            button(name='furniture',type="submit", value='Etagère propre').ui.fluid.large.teal.submit.button Etagère propre
+                            button(name='furniture',type="submit", value='Etagère flottante').ui.fluid.large.teal.submit.button Etagère flottante
+                            button(name='furniture',type="submit", value='Armoire posée').ui.fluid.large.teal.submit.button Armoire posée
+                            button(name='furniture',type="submit", value='Armoire métallique').ui.fluid.large.teal.submit.button Armoire métallique
+                            button(name='furniture',type="submit", value='Armoire boisée').ui.fluid.large.teal.submit.button Armoire boisée
+                            button(name='furniture',type="submit", value='Armoire moyenne').ui.fluid.large.teal.submit.button Armoire moyenne
+
+                    div 
+                        h1 Graphe des meubles les plus vendus
+                        canvas#RadarMaterial(width='900' height='900')
+
+block scripts
+        script.
+            const labels = [
+            'Etagère carrée',
+            'Etagère solide',
+            'Etagère propre',
+            'Etagère flottante',
+            'Armoire posée',
+            'Armoire métallique',
+            'Armoire boisée',
+            'Armoire moyenne'
+            ];
+            const data = {
+                labels: labels,
+                datasets: [{
+                label: 'matériau',
+                backgroundColor: ["green", "grey", "blue","yellow","black","red","purple"], 
+                borderColor: 'rgb(255, 99, 132)',
+                data: [3, 4, 5, 2, 1, 1, 6, 6],
+                }]
+            }
+            const config = {
+                type: 'radar',
+                data: data,
+            }
+        script.
+            document.addEventListener('DOMContentLoaded',()=>{
+            const myChartRadar = new Chart(
+            document.getElementById('RadarMaterial'),
+            config
+            );
+            })
