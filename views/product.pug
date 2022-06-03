@@ -2,11 +2,14 @@ extends layouts/frontend
 
 block content
     .ui.middle
-        h1 #{furniture}
-            each val in material
-                li= val    
         div
-            h1 Matériau utilisé : #{category}
+            h1  #{furniture}
+        div 
+            h1 Catégorie : #{category}
+        div
+            h1 Matériau utilisé :  
+            each val in material
+                h1= val 
         div
             h1 Entreprise : #{company}
         div
